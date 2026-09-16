@@ -104,15 +104,64 @@ Sebelum diajukan, proposal dievaluasi menggunakan pembobotan dengan kriteria:
 
 ## 8. Struktur Direktori Proyek
 
-```text
+
 actaflow/
 ├── client/                 # Frontend (Next.js, UI Components, Pages)
 ├── server/                 # Backend (API, Scoring Engine, Models)
+├── docker-compose.yml      # Infrastruktur lokal (DB, Redis, MinIO)
+└── README.md
+
+## 9. Panduan Instalasi & Menjalankan
+
+Aplikasi ini terdiri dari arsitektur *Full-Stack* (*Frontend* Web dan *Backend* API). Pastikan perangkat Anda sudah terinstal Node.js, Python (atau Java), serta Docker untuk menjalankan basis data secara lokal.
+
+### 1. Kloning Repositori
+
+```bash
+git clone [https://github.com/username/actaflow.git](https://github.com/username/actaflow.git)
+cd actaflow
+```
+Menjalankan Infrastruktur Pendukung
+docker-compose up -d
+
+Menjalankan Aplikasi
+Menjalankan Backend API Lokal
+cd server
+python -m venv venv
+source venv/bin/activate  # Untuk Windows: venv\Scripts\activate
+pip install -r requirements.txt
+alembic upgrade head
+uvicorn app.main:app --reload --port 8000
+
+Menjalankan Frontend Web Client
+cd client
+npm install
+npm run dev
+
+## 10. Rencana Pengembangan
+
+[x] Rancang bangun arsitektur database relasional dan Role-Based Access Control (RBAC).
+
+[x] Implementasi mesin logika persetujuan bertingkat (Hierarchical Approval Engine).
+
+[x] Antarmuka dasar untuk pengajuan proposal dan manajemen Draft dokumen.
+
+[ ] Automated Compliance Scoring: Implementasi mesin kalkulasi perhitungan otomatis kelayakan dokumen sebelum diajukan ke pimpinan.
+
+[ ] Dual-Ledger Budgeting: Modul pencatatan perbandingan langsung antara Rencana Anggaran Biaya (RAB) dan pengeluaran lapangan riil.
+
+[ ] Gudang Arsip Institusional: Ruang penyimpanan dan pencarian LPJ atau proposal lintas kepengurusan yang dikelompokkan berdasarkan tahun periode.
+
+[ ] Integrasi Kalender Organisasi: Sistem deteksi otomatis (auto-highlighting) apabila terdapat bentrokan jadwal (clashing) antar kegiatan divisi.
+
+[ ] Tanda Tangan Digital: Penyematan enkripsi persetujuan dokumen berstandar PDF/A yang terverifikasi menggunakan pemindaian QR Code.
+
+[ ] Aksesibilitas Mobile (PWA): Optimalisasi antarmuka web progresif agar proses persetujuan oleh pembina dapat dilakukan dengan mudah melalui smartphone.
 
 ## 11. Kontributor
 
 Proyek ini dirancang dan dikembangkan oleh:
 
-* **Nevichi** — Pengembang Utama ([@nevichi](https://github.com/nevichi))
+* **Nevichi** — Pengembang Utama ([@nevichi](https://github.com/nevichii))
 ├── docker-compose.yml      # Infrastruktur lokal (DB, Redis, MinIO)
 └── README.md

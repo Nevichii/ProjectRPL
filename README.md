@@ -120,7 +120,7 @@ Aplikasi ini terdiri dari arsitektur *Full-Stack* (*Frontend* Web dan *Backend* 
 ### 1. Kloning Repositori
 
 ```bash
-git clone [https://github.com/username/actaflow.git](https://github.com/Nevichii/actaflow.git)
+git clone git clone https://github.com/Nevichii/actaflow.git
 cd actaflow
 ```
 ### 2. Menjalankan Infrastruktur Pendukung

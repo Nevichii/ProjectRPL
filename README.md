@@ -122,7 +122,10 @@ git clone [https://github.com/username/actaflow.git](https://github.com/username
 cd actaflow
 ```
 Menjalankan Infrastruktur Pendukung
+
+```bash
 docker-compose up -d
+```
 
 Menjalankan Aplikasi
 Menjalankan Backend API Lokal

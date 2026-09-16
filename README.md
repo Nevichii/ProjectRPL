@@ -171,5 +171,4 @@ npm run dev
 Proyek ini dirancang dan dikembangkan oleh:
 
 * **Nevichi** — Pengembang Utama ([@nevichi](https://github.com/nevichii))
-├── docker-compose.yml      # Infrastruktur lokal (DB, Redis, MinIO)
-└── README.md
+

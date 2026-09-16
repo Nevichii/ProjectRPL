@@ -121,13 +121,13 @@ Aplikasi ini terdiri dari arsitektur *Full-Stack* (*Frontend* Web dan *Backend* 
 git clone [https://github.com/username/actaflow.git](https://github.com/username/actaflow.git)
 cd actaflow
 ```
-Menjalankan Infrastruktur Pendukung
+### 2. Menjalankan Infrastruktur Pendukung
 
 ```bash
 docker-compose up -d
 ```
 
-Menjalankan Aplikasi
+### 3. Menjalankan Aplikasi
 Menjalankan Backend API Lokal
 cd server
 python -m venv venv

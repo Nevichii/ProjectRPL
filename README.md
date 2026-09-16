@@ -105,11 +105,13 @@ Sebelum diajukan, proposal dievaluasi menggunakan pembobotan dengan kriteria:
 ## 8. Struktur Direktori Proyek
 
 
+```text
 actaflow/
 ├── client/                 # Frontend (Next.js, UI Components, Pages)
 ├── server/                 # Backend (API, Scoring Engine, Models)
 ├── docker-compose.yml      # Infrastruktur lokal (DB, Redis, MinIO)
 └── README.md
+```
 
 ## 9. Panduan Instalasi & Menjalankan
 

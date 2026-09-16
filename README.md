@@ -120,7 +120,7 @@ Aplikasi ini terdiri dari arsitektur *Full-Stack* (*Frontend* Web dan *Backend* 
 ### 1. Kloning Repositori
 
 ```bash
-git clone [https://github.com/username/actaflow.git](https://github.com/username/actaflow.git)
+git clone [https://github.com/username/actaflow.git](https://github.com/Nevichii/actaflow.git)
 cd actaflow
 ```
 ### 2. Menjalankan Infrastruktur Pendukung
@@ -150,23 +150,23 @@ npm run dev
 
 ## 10. Rencana Pengembangan
 
-[x] Rancang bangun arsitektur database relasional dan Role-Based Access Control (RBAC).
+- [x] Rancang bangun arsitektur database relasional dan Role-Based Access Control (RBAC).
 
-[x] Implementasi mesin logika persetujuan bertingkat (Hierarchical Approval Engine).
+- [x] Implementasi mesin logika persetujuan bertingkat (Hierarchical Approval Engine).
 
-[x] Antarmuka dasar untuk pengajuan proposal dan manajemen Draft dokumen.
+- [x] Antarmuka dasar untuk pengajuan proposal dan manajemen Draft dokumen.
 
-[ ] Automated Compliance Scoring: Implementasi mesin kalkulasi perhitungan otomatis kelayakan dokumen sebelum diajukan ke pimpinan.
+- [ ] Automated Compliance Scoring: Implementasi mesin kalkulasi perhitungan otomatis kelayakan dokumen sebelum diajukan ke pimpinan.
 
-[ ] Dual-Ledger Budgeting: Modul pencatatan perbandingan langsung antara Rencana Anggaran Biaya (RAB) dan pengeluaran lapangan riil.
+- [ ] Dual-Ledger Budgeting: Modul pencatatan perbandingan langsung antara Rencana Anggaran Biaya (RAB) dan pengeluaran lapangan riil.
 
-[ ] Gudang Arsip Institusional: Ruang penyimpanan dan pencarian LPJ atau proposal lintas kepengurusan yang dikelompokkan berdasarkan tahun periode.
+- [ ] Gudang Arsip Institusional: Ruang penyimpanan dan pencarian LPJ atau proposal lintas kepengurusan yang dikelompokkan berdasarkan tahun periode.
 
-[ ] Integrasi Kalender Organisasi: Sistem deteksi otomatis (auto-highlighting) apabila terdapat bentrokan jadwal (clashing) antar kegiatan divisi.
+- [ ] Integrasi Kalender Organisasi: Sistem deteksi otomatis (auto-highlighting) apabila terdapat bentrokan jadwal (clashing) antar kegiatan divisi.
 
-[ ] Tanda Tangan Digital: Penyematan enkripsi persetujuan dokumen berstandar PDF/A yang terverifikasi menggunakan pemindaian QR Code.
+- [ ] Tanda Tangan Digital: Penyematan enkripsi persetujuan dokumen berstandar PDF/A yang terverifikasi menggunakan pemindaian QR Code.
 
-[ ] Aksesibilitas Mobile (PWA): Optimalisasi antarmuka web progresif agar proses persetujuan oleh pembina dapat dilakukan dengan mudah melalui smartphone.
+- [ ] Aksesibilitas Mobile (PWA): Optimalisasi antarmuka web progresif agar proses persetujuan oleh pembina dapat dilakukan dengan mudah melalui smartphone.
 
 ## 11. Kontributor
 

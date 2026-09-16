@@ -108,5 +108,11 @@ Sebelum diajukan, proposal dievaluasi menggunakan pembobotan dengan kriteria:
 actaflow/
 ├── client/                 # Frontend (Next.js, UI Components, Pages)
 ├── server/                 # Backend (API, Scoring Engine, Models)
+
+## 11. Kontributor
+
+Proyek ini dirancang dan dikembangkan oleh:
+
+* **Nevichi** — Pengembang Utama ([@nevichi](https://github.com/nevichi))
 ├── docker-compose.yml      # Infrastruktur lokal (DB, Redis, MinIO)
 └── README.md

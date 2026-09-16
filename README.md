@@ -16,7 +16,7 @@
 7. [Teknologi yang Digunakan](#7-teknologi-yang-digunakan)
 8. [Struktur Direktori Proyek](#8-struktur-direktori-proyek)
 9. [Panduan Instalasi & Menjalankan](#9-panduan-instalasi--menjalankan)
-10. [Rencana Pengembangan (Roadmap)](#10-rencana-pengembangan-roadmap)
+10. [Rencana Pengembangan](#10-rencana-pengembangan)
 11. [Kontributor](#11-kontributor)
 
 ---

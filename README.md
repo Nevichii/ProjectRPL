@@ -139,10 +139,12 @@ alembic upgrade head
 uvicorn app.main:app --reload --port 8000
 ```
 
-Menjalankan Frontend Web Client
+* **Menjalankan Frontend Web Client**
+```bash
 cd client
 npm install
 npm run dev
+```
 
 ## 10. Rencana Pengembangan
 

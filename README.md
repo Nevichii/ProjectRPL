@@ -193,7 +193,7 @@ Aplikasi ActaFlow dinyatakan selesai dan sukses dikembangkan jika memenuhi krite
 
 ## Struktur Direktori Proyek
 
-
+```text
 actaflow/
 ├── client/                 # Next.js Frontend Workspace
 │   ├── src/

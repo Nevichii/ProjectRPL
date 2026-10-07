@@ -40,9 +40,9 @@
 * `Description`
 * `EventStartDate`
 * `EventEndDate`
-* `ComplianceScore` (Integer, 0-100)
+* `Room` (Enum / Option: `RUANGAN_1`, `RUANGAN_2`, `LAINNYA`)
 * `Status` (DRAFT, PRE_CHECK, PENDING, APPROVED, REJECTED, ARCHIVED)
-* `DocumentUrl` (Tautan file dari MinIO)
+* `DocumentUrl` (Tautan file PDF dari MinIO)
 * `CreatedAt`
 * `UpdatedAt`
 

@@ -141,5 +141,6 @@ actaflow/
 │   └── main.py
 │
 ├── .env.example
+├── ARCHITECTURE.md         # Spesifikasi arsitektur & kebutuhan teknis
 ├── docker-compose.yml      # Berisi service MySQL, MinIO, dan Redis
 └── README.md

@@ -33,8 +33,8 @@ Projek ini dikembangkan sebagai solusi praktis atas permasalahan inefisiensi bir
 | No | Fitur | Deskripsi |
 | :--- | :--- | :--- |
 | 1 | **Hierarchical Approval Pipeline** | Alur persetujuan bertingkat berbasis *state machine* dengan riwayat pelacakan status dokumen secara seketika (*real-time tracking*). |
-| 4 | **Institutional Knowledge Hub** | Ruang pengarsipan tersentralisasi untuk menyimpan dan mencari referensi dokumen (LPJ, proposal) dari periode-periode sebelumnya. |
-| 5 | **Conflict Detector Calendar** | Kalender terpadu yang dapat mendeteksi dan memberikan peringatan otomatis jika terdapat bentrokan jadwal (*clashing*) antar kegiatan divisi. |
+| 2 | **Institutional Knowledge Hub** | Ruang pengarsipan tersentralisasi untuk menyimpan dan mencari referensi dokumen (LPJ, proposal) dari periode-periode sebelumnya. |
+| 3 | **Conflict Detector Calendar** | Kalender terpadu yang mendeteksi dan memberikan peringatan otomatis jika terdapat bentrokan jadwal maupun penggunaan ruangan (Audi 1, Audi 2, lainnya) antar kegiatan divisi. |
 
 ## Fitur yang Tidak Dikerjakan
 

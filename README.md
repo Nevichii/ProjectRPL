@@ -33,8 +33,6 @@ Projek ini dikembangkan sebagai solusi praktis atas permasalahan inefisiensi bir
 | No | Fitur | Deskripsi |
 | :--- | :--- | :--- |
 | 1 | **Hierarchical Approval Pipeline** | Alur persetujuan bertingkat berbasis *state machine* dengan riwayat pelacakan status dokumen secara seketika (*real-time tracking*). |
-| 2 | **Automated Compliance Scoring** | Mesin kalkulasi otomatis yang mengevaluasi kelengkapan proposal (elemen wajib, keseimbangan anggaran, dan jadwal) sebelum diteruskan ke peninjau. |
-| 3 | **Dual-Ledger Budget Tracker** | Dasbor pencatatan perbandingan langsung antara Rencana Anggaran Biaya (RAB) yang disetujui dengan pengeluaran lapangan riil. |
 | 4 | **Institutional Knowledge Hub** | Ruang pengarsipan tersentralisasi untuk menyimpan dan mencari referensi dokumen (LPJ, proposal) dari periode-periode sebelumnya. |
 | 5 | **Conflict Detector Calendar** | Kalender terpadu yang dapat mendeteksi dan memberikan peringatan otomatis jika terdapat bentrokan jadwal (*clashing*) antar kegiatan divisi. |
 

@@ -54,15 +54,6 @@
 * `Notes`
 * `CreatedAt`
 
-### 4. LedgerItem (Anggaran & Realisasi)
-* `Id` (UUID)
-* `ProposalId` (FK -> Proposal)
-* `ItemName`
-* `PlannedAmount` (Anggaran RAB awal)
-* `ActualAmount` (Pengeluaran riil)
-* `ReceiptUrl` (Tautan bukti struk dari MinIO)
-* `CreatedAt`
-
 ---
 
 ## Aturan Basis Data (Database Rules)

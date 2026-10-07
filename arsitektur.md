@@ -30,7 +30,6 @@
 * `Name`
 * `Email`
 * `PasswordHash`
-* `Role` (PANITIA, PENGURUS, PEMBINA)
 * `Division` (Nama Divisi/Departemen)
 * `CreatedAt`
 

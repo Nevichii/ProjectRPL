@@ -1,69 +1,41 @@
 export interface Proposal {
   id: string;
   title: string;
-  room: string;
+  organization: string;
   date: string;
+  room: string;
   status: string;
-  himpunan: string;
 }
 
-/**
- * Filter 1: Menyaring daftar proposal berdasarkan kata kunci judul (Case-insensitive)
- */
-export function filterProposalsBySearch(proposals: Proposal[], keyword: string): Proposal[] {
-  if (!keyword || keyword.trim() === "") {
-    return proposals;
-  }
-  const lowerKeyword = keyword.toLowerCase();
-  return proposals.filter((proposal) =>
-    proposal.title.toLowerCase().includes(lowerKeyword)
-  );
-}
-
-/**
- * Filter 2: Menyaring daftar proposal berdasarkan status persetujuan
- */
-export function filterProposalsByStatus(proposals: Proposal[], status: string): Proposal[] {
-  if (!status || status === "ALL" || status.trim() === "") {
-    return proposals;
-  }
+export function filterBySearch(proposals: Proposal[], keyword: string): Proposal[] {
+  if (!keyword) return proposals;
+  const lower = keyword.toLowerCase();
   return proposals.filter(
-    (proposal) => proposal.status.toUpperCase() === status.toUpperCase()
+    (p) => p.title.toLowerCase().includes(lower) || p.organization.toLowerCase().includes(lower)
   );
 }
 
-/**
- * Filter 3: Menyaring daftar proposal berdasarkan ruangan / lokasi kegiatan
- */
-export function filterProposalsByRoom(proposals: Proposal[], room: string): Proposal[] {
-  if (!room || room === "ALL" || room.trim() === "") {
-    return proposals;
-  }
-  return proposals.filter(
-    (proposal) => proposal.room.toLowerCase() === room.toLowerCase()
-  );
+export function filterByStatus(proposals: Proposal[], status: string): Proposal[] {
+  if (!status || status === 'ALL') return proposals;
+  return proposals.filter((p) => p.status === status);
 }
 
-/**
- * Filter 4: Menyaring daftar proposal berdasarkan asal himpunan / organisasi
- */
-export function filterProposalsByOrganization(proposals: Proposal[], himpunan: string): Proposal[] {
-  if (!himpunan || himpunan === "ALL" || himpunan.trim() === "") {
-    return proposals;
-  }
-  return proposals.filter(
-    (proposal) => proposal.himpunan.toLowerCase() === himpunan.toLowerCase()
-  );
+export function filterByRoom(proposals: Proposal[], room: string): Proposal[] {
+  if (!room || room === 'ALL') return proposals;
+  return proposals.filter((p) => p.room === room);
 }
 
-/**
- * Filter 5: Menyaring daftar proposal berdasarkan tanggal atau bulan pelaksanaan kegiatan
- */
-export function filterProposalsByDate(proposals: Proposal[], dateKeyword: string): Proposal[] {
-  if (!dateKeyword || dateKeyword === "ALL" || dateKeyword.trim() === "") {
-    return proposals;
-  }
-  return proposals.filter(
-    (proposal) => proposal.date.includes(dateKeyword)
-  );
+export function filterByOrganization(proposals: Proposal[], org: string): Proposal[] {
+  if (!org || org === 'ALL') return proposals;
+  return proposals.filter((p) => p.organization === org);
+}
+
+export function filterByDateRange(proposals: Proposal[], startDate: string, endDate: string): Proposal[] {
+  if (!startDate && !endDate) return proposals;
+  return proposals.filter((p) => {
+    const pDate = new Date(p.date).getTime();
+    const start = startDate ? new Date(startDate).getTime() : 0;
+    const end = endDate ? new Date(endDate).getTime() : Infinity;
+    return pDate >= start && pDate <= end;
+  });
 }

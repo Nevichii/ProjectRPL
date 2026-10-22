@@ -11,9 +11,8 @@ export async function POST(request: Request) {
 
         const connection = await pool.getConnection();
 
-        // Cek user berdasarkan email dan password
         const [rows]: any = await connection.execute(
-            'SELECT id, email FROM users WHERE email = ? AND password = ?',
+            'SELECT id, email, role FROM users WHERE email = ? AND password = ?',
             [email, password]
         );
 

@@ -8,11 +8,13 @@ export default function LoginPage() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
+    const [loading, setLoading] = useState(false);
     const router = useRouter();
 
     const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
         setError('');
+        setLoading(true);
 
         try {
             const res = await fetch('/api/auth/login', {
@@ -24,52 +26,67 @@ export default function LoginPage() {
             const data = await res.json();
 
             if (!res.ok) {
-                setError(data.error || 'Email atau password salah');
+                setError(data.error || 'Login gagal.');
+                setLoading(false);
                 return;
             }
 
-            alert('Login berhasil!');
-            router.push('/'); // Mengarah ke dashboard utama
+            localStorage.setItem('user', JSON.stringify(data.user));
+
+            router.push('/');
         } catch (err) {
             setError('Gagal terhubung ke server.');
+            setLoading(false);
         }
     };
 
     return (
-        <div className="flex min-h-screen items-center justify-center bg-gray-50 px-4 py-12">
-            <div className="w-full max-w-md space-y-8 rounded-xl bg-white p-8 shadow-md">
-                <h2 className="text-center text-3xl font-extrabold text-gray-900">Login ActaFlow</h2>
-                {error && <div className="rounded bg-red-100 p-3 text-sm text-red-700">{error}</div>}
-                <form className="mt-8 space-y-6" onSubmit={handleLogin}>
+        <div className="min-h-screen bg-slate-50 flex items-center justify-center p-4">
+            <div className="max-w-md w-full bg-white rounded-xl shadow-sm border border-slate-200 p-8">
+                <h1 className="text-2xl font-bold text-slate-900 text-center mb-1">Login ActaFlow</h1>
+                <p className="text-sm text-slate-500 text-center mb-6">Masuk ke akun Himpunan atau Kemahasiswaan</p>
+
+                {error && <div className="mb-4 p-3 bg-red-100 text-red-700 text-sm rounded-lg">{error}</div>}
+
+                <form onSubmit={handleLogin} className="space-y-4">
                     <div>
-                        <label className="block text-sm font-medium text-gray-700">Email</label>
+                        <label className="block text-xs font-semibold text-slate-700 mb-1">Email</label>
                         <input
                             type="email"
                             required
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
-                            className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-indigo-500 focus:outline-none"
+                            placeholder="nama@actaflow.com"
+                            className="w-full px-3 py-2 text-sm border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
                         />
                     </div>
+
                     <div>
-                        <label className="block text-sm font-medium text-gray-700">Password</label>
+                        <label className="block text-xs font-semibold text-slate-700 mb-1">Password</label>
                         <input
                             type="password"
                             required
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
-                            className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-indigo-500 focus:outline-none"
+                            placeholder="••••••••"
+                            className="w-full px-3 py-2 text-sm border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
                         />
                     </div>
+
                     <button
                         type="submit"
-                        className="w-full rounded-md bg-indigo-600 px-4 py-2 font-medium text-white hover:bg-indigo-700"
+                        disabled={loading}
+                        className="w-full py-2.5 bg-blue-600 text-white text-sm font-semibold rounded-lg hover:bg-blue-700 transition-colors shadow-sm mt-2"
                     >
-                        Login
+                        {loading ? 'Memproses...' : 'Login'}
                     </button>
                 </form>
-                <p className="text-center text-sm text-gray-600">
-                    Belum punya akun? <Link href="/signup" className="text-indigo-600">Sign Up</Link>
+
+                <p className="text-xs text-center text-slate-500 mt-6">
+                    Belum punya akun?{' '}
+                    <Link href="/signup" className="text-blue-600 hover:underline font-medium">
+                        Sign Up
+                    </Link>
                 </p>
             </div>
         </div>

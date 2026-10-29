@@ -61,5 +61,3 @@ Aplikasi ActaFlow dinyatakan selesai dan sukses dikembangkan jika memenuhi krite
 ### 3. Pengujian Antarmuka (UI/UX)
 * Antarmuka pemantauan status alur kerja (*pipeline board*) dan manajemen dokumen dapat beradaptasi dan tetap mudah dibaca baik melalui layar *desktop* (PC/Laptop) maupun perangkat genggam (*smartphone*).
 
-## Demo Video Website
-### https://drive.google.com/drive/folders/1pw1it458axP5_db_AkjOb7ACt-s8gM9k?usp=sharing

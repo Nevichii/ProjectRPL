@@ -33,7 +33,7 @@ Projek ini dikembangkan sebagai solusi praktis atas permasalahan inefisiensi bir
 | No | Fitur | Deskripsi |
 | :--- | :--- | :--- |
 | 1 | **Hierarchical Approval Pipeline** | Alur persetujuan bertingkat berbasis *state machine* dengan riwayat pelacakan status dokumen secara seketika (*real-time tracking*). |
-| 2 | **Institutional Knowledge Hub** | Ruang pengarsipan tersentralisasi untuk menyimpan dan mencari referensi dokumen (LPJ, proposal) dari periode-periode sebelumnya. |
+| 2 | **Institutional Knowledge Hub** | Ruang pengarsipan tersentralisasi untuk menyimpan dan mencari referensi dokumen proposal dari periode-periode sebelumnya. |
 | 3 | **Conflict Detector Calendar** | Kalender terpadu yang mendeteksi dan memberikan peringatan otomatis jika terdapat bentrokan jadwal maupun penggunaan ruangan (Audi 1, Audi 2, lainnya) antar kegiatan divisi. |
 
 ## Fitur yang Tidak Dikerjakan
@@ -51,7 +51,6 @@ Aplikasi ActaFlow dinyatakan selesai dan sukses dikembangkan jika memenuhi krite
 
 ### 1. Fungsionalitas Utama (*Core Flow*) Berjalan Smooth
 * Pengguna (Panitia) dapat membuat draf pengajuan baru, mengisi parameter kelayakan dokumen, dan mengunggah berkas pendukung.
-* Sistem *Scoring Engine* berhasil melakukan kalkulasi otomatis dan menolak/meneruskan dokumen secara tepat berdasarkan ambang batas skor minimum.
 * Pengguna dengan hak akses *Reviewer* dapat menyetujui, menolak, atau meminta revisi, dan status tersebut langsung terefleksikan pada dasbor pengaju dokumen.
 
 ### 2. Keberhasilan Teknis
@@ -61,3 +60,40 @@ Aplikasi ActaFlow dinyatakan selesai dan sukses dikembangkan jika memenuhi krite
 ### 3. Pengujian Antarmuka (UI/UX)
 * Antarmuka pemantauan status alur kerja (*pipeline board*) dan manajemen dokumen dapat beradaptasi dan tetap mudah dibaca baik melalui layar *desktop* (PC/Laptop) maupun perangkat genggam (*smartphone*).
 
+## Panduan Instalasi Ulang & Fresh Clone
+
+### 1. Kloning Repositori
+git clone https://github.com/Nevichii/actaflow.git
+cd actaflow/client
+npm install
+
+### 2. Query Tabel Database
+CREATE TABLE IF NOT EXISTS users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    role VARCHAR(50) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS proposals (
+    id VARCHAR(50) PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    organization VARCHAR(100) NOT NULL,
+    date DATE NOT NULL,
+    room VARCHAR(50) NOT NULL,
+    status VARCHAR(50) DEFAULT 'Draft',
+    created_by VARCHAR(255) NOT NULL,
+    file_name VARCHAR(255) DEFAULT 'lampiran.pdf',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+INSERT INTO users (email, password, role) VALUES 
+('it@actaflow.com', '123456', 'Informatika'),
+('si@actaflow.com', '123456', 'Sistem Informasi'),
+('kemahasiswaan@actaflow.com', '123456', 'Kemahasiswaan'),
+('admin@actaflow.com', '123456', 'Admin')
+ON DUPLICATE KEY UPDATE role=VALUES(role);
+
+### 3. Menjalankan aplikasi
+kita dapat menjalankan aplikasi dengan npm run dev

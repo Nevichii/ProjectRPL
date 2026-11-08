@@ -1,10 +1,14 @@
 import mysql from 'mysql2/promise';
 
 export const pool = mysql.createPool({
-  host: 'localhost',
-  user: 'root',
-  password: '', 
-  database: 'actaflow',
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
+  port: Number(process.env.DB_PORT) || 4000,
+  ssl: {
+    rejectUnauthorized: true, 
+  },
   waitForConnections: true,
   connectionLimit: 10,
   queueLimit: 0,

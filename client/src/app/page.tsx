@@ -55,6 +55,28 @@ export default function DashboardPage() {
     }
   };
 
+  const handleDeleteDraft = async (id: string) => {
+    if (!confirm('Apakah kamu yakin ingin membatalkan dan menghapus draf proposal ini?')) return;
+    try {
+      const res = await fetch('/api/proposals', {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id }),
+      });
+
+      if (res.ok) {
+        if (user) {
+          loadProposals(user.role, user.email);
+        }
+      } else {
+        alert('Gagal menghapus draf.');
+      }
+    } catch (err) {
+      console.error(err);
+      alert('Terjadi kesalahan koneksi.');
+    }
+  };
+
   const handleLogout = () => {
     localStorage.removeItem('user');
     setUser(null);
@@ -212,39 +234,46 @@ export default function DashboardPage() {
                         </span>
                       </td>
                       <td className="py-3 px-4">
-                        <a
-                          href={`/uploads/${p.file_name}`}
-                          target="_blank"
-                          rel="noopener noreferrer"
+                        <button
+                          onClick={() => alert(`Membuka dokumen: ${p.file_name || 'lampiran.pdf'}`)}
                           className="text-blue-600 hover:underline text-xs font-medium flex items-center gap-1"
                         >
                           📄 {p.file_name || 'lampiran.pdf'}
-                        </a>
+                        </button>
                       </td>
                       <td className="py-3 px-4">
                         <span
-                          className={`px-2.5 py-1 rounded-full text-xs font-semibold ${p.status === 'Approved'
+                          className={`px-2.5 py-1 rounded-full text-xs font-semibold ${
+                            p.status === 'Approved'
                               ? 'bg-emerald-100 text-emerald-700'
                               : p.status === 'Pending'
-                                ? 'bg-amber-100 text-amber-700'
-                                : p.status === 'Revise'
-                                  ? 'bg-rose-100 text-rose-700'
-                                  : p.status === 'Draft'
-                                    ? 'bg-slate-200 text-slate-700'
-                                    : 'bg-red-100 text-red-700'
-                            }`}
+                              ? 'bg-amber-100 text-amber-700'
+                              : p.status === 'Revise'
+                              ? 'bg-rose-100 text-rose-700'
+                              : p.status === 'Draft'
+                              ? 'bg-slate-200 text-slate-700'
+                              : 'bg-red-100 text-red-700'
+                          }`}
                         >
                           {p.status}
                         </span>
                       </td>
                       <td className="py-3 px-4 text-center">
                         {user && user.role !== 'Kemahasiswaan' && p.status === 'Draft' && p.created_by === user.email && (
-                          <button
-                            onClick={() => handleUpdateStatus(p.id, 'Pending')}
-                            className="px-3 py-1 bg-blue-600 text-white text-xs font-medium rounded hover:bg-blue-700 transition-colors"
-                          >
-                            Kirim
-                          </button>
+                          <div className="flex items-center justify-center gap-1.5">
+                            <button
+                              onClick={() => handleUpdateStatus(p.id, 'Pending')}
+                              className="px-2.5 py-1 bg-blue-600 text-white text-xs font-medium rounded hover:bg-blue-700 transition-colors"
+                            >
+                              Kirim
+                            </button>
+                            <button
+                              onClick={() => handleDeleteDraft(p.id)}
+                              className="px-2.5 py-1 bg-red-600 text-white text-xs font-medium rounded hover:bg-red-700 transition-colors"
+                            >
+                              Batalkan
+                            </button>
+                          </div>
                         )}
 
                         {user && user.role === 'Kemahasiswaan' && p.status === 'Pending' && (

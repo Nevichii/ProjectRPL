@@ -81,13 +81,6 @@ export default function LoginPage() {
                         {loading ? 'Memproses...' : 'Login'}
                     </button>
                 </form>
-
-                <p className="text-xs text-center text-slate-500 mt-6">
-                    Belum punya akun?{' '}
-                    <Link href="/signup" className="text-blue-600 hover:underline font-medium">
-                        Sign Up
-                    </Link>
-                </p>
             </div>
         </div>
     );

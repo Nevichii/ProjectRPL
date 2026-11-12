@@ -1,7 +1,5 @@
 import { NextResponse } from 'next/server';
 import { pool } from '../../../db/mysql';
-import { writeFile } from 'fs/promises';
-import path from 'path';
 
 export async function GET(request: Request) {
   try {
@@ -14,10 +12,8 @@ export async function GET(request: Request) {
     let params: any[] = [];
 
     if (userRole === 'Kemahasiswaan') {
-      // Akun Kemahasiswaan TIDAK BOLEH melihat proposal yang masih berstatus 'Draft'
       query += ` AND status != 'Draft'`;
     } else if (userRole !== 'Admin') {
-      // Akun Himpunan (Informatika/SI) hanya melihat proposal buatan mereka sendiri
       query += ` AND created_by = ?`;
       params.push(userEmail);
     }
@@ -36,7 +32,7 @@ export async function GET(request: Request) {
 export async function POST(request: Request) {
   try {
     const formData = await request.formData();
-    
+
     const title = formData.get('title') as string;
     const organization = formData.get('organization') as string;
     const date = formData.get('date') as string;
@@ -49,16 +45,10 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Semua kolom wajib diisi!' }, { status: 400 });
     }
 
-    let fileName = 'lampiran.pdf';
 
-    if (file && file.size > 0) {
-      const bytes = await file.arrayBuffer();
-      const buffer = Buffer.from(bytes);
-      
-      fileName = `${Date.now()}-${file.name.replace(/\s+/g, '_')}`;
-      const uploadPath = path.join(process.cwd(), 'public/uploads', fileName);
-      
-      await writeFile(uploadPath, buffer);
+    let fileName = 'lampiran.pdf';
+    if (file && file.size > 0 && file.name) {
+      fileName = file.name;
     }
 
     const id = `PRP-${Math.floor(100 + Math.random() * 900)}`;
